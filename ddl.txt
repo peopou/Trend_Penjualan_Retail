@@ -1,0 +1,44 @@
+url = https://www.kaggle.com/datasets/braniac2000/retail-dataset
+
+DLL = cur.execute("""CREATE TABLE ML3 (
+            "Order ID" VARCHAR(50),
+            "Order Date" VARCHAR(50),
+            "Customer Name" VARCHAR(100),
+            "Country" VARCHAR(50),
+            "State" VARCHAR(100),
+            "City" VARCHAR(100),
+            "Region" VARCHAR(50),
+            "Segment" VARCHAR(50),
+            "Ship Mode" VARCHAR(50),
+            "Category" VARCHAR(50),
+            "Sub-Category" VARCHAR(50),
+            "Product Name" TEXT,
+            "Discount" VARCHAR(50),
+            "Sales" VARCHAR(50),
+            "Profit" VARCHAR(50),
+            "Quantity" VARCHAR(50),
+            "Feedback?" VARCHAR(50)
+            )
+        """)
+
+DML =  for index, row in df.iterrows():
+        try:
+            cur.execute("INSERT INTO sales VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (
+                row['Order ID'],
+                row['Order Date'],
+                row['Customer Name'], 
+                row['Country'],
+                row['State'],
+                row['City'],
+                row['Region'],
+                row['Segment'],
+                row['Ship Mode'],
+                row['Category'],
+                row['Sub-Category'],
+                row['Product Name'],
+                row[' Discount '],
+                row[' Sales '],
+                row[' Profit '],
+                row['Quantity'],
+                row['Feedback?']
+            ))
